@@ -12,6 +12,8 @@
 <link href="../_static/gallery.css" rel="stylesheet" type="text/css"/>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
+<link href="../advanced/cpp_frontend.html" rel="next" title="Using the PyTorch C++ Frontend"/>
+<link href="quantized_transfer_learning_tutorial.html" rel="prev" title="Quantized Transfer Learning for Computer Vision Tutorial"/>
 <script src="../_static/js/modernizr.min.js"></script>
 <!-- Preload the theme fonts -->
 <link as="font" crossorigin="anonymous" href="../_static/fonts/FreightSans/freight-sans-book.woff2" rel="preload" type="font/woff2"/>
@@ -171,10 +173,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../advanced/cpp_extension.html">Custom C++ and CUDA Extensions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Quantization (experimental)</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../advanced/dynamic_quantization_tutorial.html">(experimental) Dynamic Quantization on an LSTM Word Language Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/static_quantization_tutorial.html">(experimental) Static Quantization with Eager Mode in PyTorch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quantized_transfer_learning_tutorial.html">Quantized Transfer Learning for Computer Vision Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SyntaxError</a></li>
 </ul>
 <p class="caption"><span class="caption-text">PyTorch in Other Languages</span></p>
 <ul>
@@ -216,10 +219,10 @@
 <div class="pytorch-call-to-action-links">
 <div id="tutorial-type">intermediate/dynamic_quantization_bert_tutorial</div>
 <div id="google-colab-link">
-<img class="call-to-action-img" src="../_static/images/pytorch-colab.svg"/>
+<img class="call-to-action-img" src="../_static/images/pytorch-colab.svg">
 <div class="call-to-action-desktop-view">Run in Google Colab</div>
 <div class="call-to-action-mobile-view">Colab</div>
-</div>
+</img></div>
 <div id="download-notebook-link">
 <img class="call-to-action-notebook-img" src="../_static/images/pytorch-download.svg"/>
 <div class="call-to-action-desktop-view">Download Notebook</div>
@@ -254,9 +257,8 @@
 <span class="sd">"""</span>
 </pre></div>
 </div>
-</div>
 <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>In this tutorial, we will apply the dynamic quantization on a BERT
 model, closely following the BERT model from the HuggingFace
 Transformers examples (<a class="reference external" href="https://github.com/huggingface/transformers">https://github.com/huggingface/transformers</a>).
@@ -301,9 +303,9 @@ below.</p></li>
 </div>
 <!-- ![alt text](https://drive.google.com/file/d/1NJIWxtY39pBl0KUCOCMF5vpfuWLlSKf8/view?usp=sharing) --></div>
 <div class="section" id="setup">
-<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="install-pytorch-and-huggingface-transformers">
-<h2>Install PyTorch and HuggingFace Transformers<a class="headerlink" href="#install-pytorch-and-huggingface-transformers" title="Permalink to this headline">¶</a></h2>
+<h3>Install PyTorch and HuggingFace Transformers<a class="headerlink" href="#install-pytorch-and-huggingface-transformers" title="Permalink to this headline">¶</a></h3>
 <p>To start this tutorial, let’s first follow the installation instructions
 in PyTorch and HuggingFace Github Repo: -
 <a class="reference external" href="https://github.com/pytorch/pytorch/#installation">https://github.com/pytorch/pytorch/#installation</a> -
@@ -319,6 +321,7 @@ recommended to install the latest version of torch and torchvision. You
 can find the most recent instructions on local installation here
 <a class="reference external" href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a>. For example, to install on
 Mac:</p>
+</div>
 </div>
 <div class="section" id="import-the-necessary-modules">
 <h2>Import the necessary modules<a class="headerlink" href="#import-the-necessary-modules" title="Permalink to this headline">¶</a></h2>
@@ -382,8 +385,6 @@ and unpack it to some directory “glue_data/MRPC”.</p>
 the following helper functions: one for converting the text examples
 into the feature vectors; The other one for measuring the F1 score of
 the predicted result.</p>
-<div class="section" id="convert-the-texts-into-features">
-<h3>Convert the texts into features<a class="headerlink" href="#convert-the-texts-into-features" title="Permalink to this headline">¶</a></h3>
 <p>glue_convert_examples_to_features (
 <a class="reference external" href="https://github.com/huggingface/transformers/blob/master/transformers/data/processors/glue.py">https://github.com/huggingface/transformers/blob/master/transformers/data/processors/glue.py</a>)
 load a data file into a list of <code class="docutils literal notranslate"><span class="pre">InputFeatures</span></code>.</p>
@@ -395,9 +396,6 @@ at the end;</p></li>
 <li><p>Generate token type ids to indicate whether a token belongs to the
 first sequence or the second sequence;</p></li>
 </ul>
-</div>
-<div class="section" id="f1-metric">
-<h3>F1 metric<a class="headerlink" href="#f1-metric" title="Permalink to this headline">¶</a></h3>
 <p>The F1 score
 (<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html">https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html</a>)
 can be interpreted as a weighted average of the precision and recall,
@@ -406,10 +404,8 @@ relative contribution of precision and recall to the F1 score are equal.
 The formula for the F1 score is:</p>
 <p>F1 = 2 * (precision * recall) / (precision + recall)</p>
 </div>
-</div>
-</div>
 <div class="section" id="fine-tune-the-bert-model">
-<h1>Fine-tune the BERT model<a class="headerlink" href="#fine-tune-the-bert-model" title="Permalink to this headline">¶</a></h1>
+<h2>Fine-tune the BERT model<a class="headerlink" href="#fine-tune-the-bert-model" title="Permalink to this headline">¶</a></h2>
 <p>The spirit of BERT is to pre-train the language representations and then
 to fine-tune the deep bi-directional representations on a wide range of
 tasks with minimal task-dependent parameters, and achieves
@@ -453,6 +449,7 @@ drive.mount('/content/drive')
 !ls
 !pwd
 </pre></div>
+</div>
 </div>
 <div class="section" id="set-global-configurations">
 <h2>Set global configurations<a class="headerlink" href="#set-global-configurations" title="Permalink to this headline">¶</a></h2>
@@ -653,9 +650,8 @@ model before and after the dynamic quantization.</p>
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="apply-the-dynamic-quantization">
-<h1>Apply the dynamic quantization<a class="headerlink" href="#apply-the-dynamic-quantization" title="Permalink to this headline">¶</a></h1>
+<h2>Apply the dynamic quantization<a class="headerlink" href="#apply-the-dynamic-quantization" title="Permalink to this headline">¶</a></h2>
 <p>We call <code class="docutils literal notranslate"><span class="pre">torch.quantization.quantize_dynamic</span></code> on the model to apply
 the dynamic quantization on the HuggingFace BERT model. Specifically,</p>
 <ul class="simple">
@@ -687,6 +683,7 @@ support for dynamic quantization.</p>
     <span class="n">model</span><span class="p">,</span> <span class="n">qconfig_dict</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">qint8</span>
 <span class="p">)</span>
 </pre></div>
+</div>
 </div>
 <div class="section" id="check-the-model-size">
 <h2>Check the model size<a class="headerlink" href="#check-the-model-size" title="Permalink to this headline">¶</a></h2>
@@ -773,9 +770,8 @@ processing the evaluation of MRPC dataset.</p>
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="conclusion">
-<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
 <p>In this tutorial, we demonstrated how to demonstrate how to convert a
 well-known state-of-the-art NLP model like BERT into dynamic quantized
 model. Dynamic quantization can reduce the size of the model while only
@@ -785,7 +781,7 @@ an issue here (<a class="reference external" href="https://github.com/pytorch/py
 any.</p>
 </div>
 <div class="section" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>[1] J.Devlin, M. Chang, K. Lee and K. Toutanova, BERT: Pre-training of
 Deep Bidirectional Transformers for Language Understanding (2018)</p>
 <p>[2] HuggingFace Transformers.
@@ -803,9 +799,14 @@ Quantized 8bit BERT. arXiv preprint arXiv:1910.06188.</p>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>
+</div>
 </article>
 </div>
 <footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="../advanced/cpp_frontend.html" rel="next" title="Using the PyTorch C++ Frontend">Next <img class="next-page" src="../_static/images/chevron-right-orange.svg"/></a>
+<a accesskey="p" class="btn btn-neutral" href="quantized_transfer_learning_tutorial.html" rel="prev" title="Quantized Transfer Learning for Computer Vision Tutorial"><img class="previous-page" src="../_static/images/chevron-right-orange.svg"/> Previous</a>
+</div>
 <hr class="helpful-hr hr-top"/>
 <div class="helpful-container">
 <div class="helpful-question">Was this helpful?</div>
@@ -813,7 +814,7 @@ Quantized 8bit BERT. arXiv preprint arXiv:1910.06188.</p>
 <div class="helpful-question no-link" data-behavior="was-this-helpful-event" data-response="no">No</div>
 <div class="was-helpful-thank-you">Thank you</div>
 </div>
-<hr class="helpful-hr hr-bottom"/>
+<hr class="helpful-hr hr-bottom">
 <div role="contentinfo">
 <p>
         © Copyright 2017, PyTorch.
@@ -823,40 +824,34 @@ Quantized 8bit BERT. arXiv preprint arXiv:1910.06188.</p>
 <div>
         Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
       </div>
-</footer>
+</hr></footer>
 </div>
 </div>
 <div class="pytorch-content-right" id="pytorch-content-right">
 <div class="pytorch-right-menu" id="pytorch-right-menu">
 <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
 <ul>
-<li><a class="reference internal" href="#">SyntaxError</a></li>
+<li><a class="reference internal" href="#">SyntaxError</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
 <li><a class="reference internal" href="#setup">Setup</a><ul>
 <li><a class="reference internal" href="#install-pytorch-and-huggingface-transformers">Install PyTorch and HuggingFace Transformers</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#import-the-necessary-modules">Import the necessary modules</a></li>
 <li><a class="reference internal" href="#download-the-dataset">Download the dataset</a></li>
-<li><a class="reference internal" href="#helper-functions">Helper functions</a><ul>
-<li><a class="reference internal" href="#convert-the-texts-into-features">Convert the texts into features</a></li>
-<li><a class="reference internal" href="#f1-metric">F1 metric</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#fine-tune-the-bert-model">Fine-tune the BERT model</a><ul>
+<li><a class="reference internal" href="#helper-functions">Helper functions</a></li>
+<li><a class="reference internal" href="#fine-tune-the-bert-model">Fine-tune the BERT model</a></li>
 <li><a class="reference internal" href="#set-global-configurations">Set global configurations</a></li>
 <li><a class="reference internal" href="#load-the-fine-tuned-bert-model">Load the fine-tuned BERT model</a></li>
 <li><a class="reference internal" href="#define-the-tokenize-and-evaluation-function">Define the tokenize and evaluation function</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#apply-the-dynamic-quantization">Apply the dynamic quantization</a><ul>
+<li><a class="reference internal" href="#apply-the-dynamic-quantization">Apply the dynamic quantization</a></li>
 <li><a class="reference internal" href="#check-the-model-size">Check the model size</a></li>
 <li><a class="reference internal" href="#evaluate-the-inference-accuracy-and-time">Evaluate the inference accuracy and time</a></li>
 <li><a class="reference internal" href="#serialize-the-quantized-model">Serialize the quantized model</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#conclusion">Conclusion</a></li>
 <li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -948,9 +943,9 @@ Quantized 8bit BERT. arXiv preprint arXiv:1910.06188.</p>
 </script>
 <noscript>
 <img height="1" src="https://www.facebook.com/tr?id=243028289693773&amp;ev=PageView
-  &amp;noscript=1" width="1"/>
-</noscript>
-<img alt="" height="1" src="https://www.googleadservices.com/pagead/conversion/795629140/?label=txkmCPmdtosBENSssfsC&amp;guid=ON&amp;script=0" style="border-style:none;" width="1"/>
+  &amp;noscript=1" width="1">
+</img></noscript>
+<img alt="" height="1" src="https://www.googleadservices.com/pagead/conversion/795629140/?label=txkmCPmdtosBENSssfsC&amp;guid=ON&amp;script=0" style="border-style:none;" width="1">
 <!-- Begin Footer -->
 <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
 <div class="container">
@@ -1104,5 +1099,5 @@ Quantized 8bit BERT. arXiv preprint arXiv:1910.06188.</p>
       });
     })
   </script>
-</body>
+</img></body>
 </html>
