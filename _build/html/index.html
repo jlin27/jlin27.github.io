@@ -1,0 +1,990 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to PyTorch Tutorials &mdash; PyTorch Tutorials 1.3.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Deep Learning with PyTorch: A 60 Minute Blitz" href="beginner/deep_learning_60min_blitz.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://pytorch.org/get-started">Get Started</a>
+          </li>
+
+          <li>
+            <div class="ecosystem-dropdown">
+              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
+                Ecosystem
+              </a>
+              <div class="ecosystem-dropdown-menu">
+                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
+                  <span class=dropdown-title>Models (Beta)</span>
+                  <p>Discover, publish, and reuse pre-trained models</p>
+                </a>
+                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
+                  <span class=dropdown-title>Tools & Libraries</span>
+                  <p>Explore the ecosystem of tools and libraries</p>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li class="active">
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
+          </li>
+
+          <li>
+            <div class="resources-dropdown">
+              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
+                Resources
+              </a>
+              <div class="resources-dropdown-menu">
+                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
+                  <span class=dropdown-title>Developer Resources</span>
+                  <p>Find resources and get questions answered</p>
+                </a>
+                <a class="nav-dropdown-item" href="https://pytorch.org/features">
+                  <span class=dropdown-title>About</span>
+                  <p>Learn about PyTorch’s features and capabilities</p>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <a href="https://github.com/pytorch/pytorch">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  1.3.1
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search Tutorials" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beginner/deep_learning_60min_blitz.html">Deep Learning with PyTorch: A 60 Minute Blitz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/data_loading_tutorial.html">Writing Custom Datasets, DataLoaders and Transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/tensorboard_tutorial.html">Visualizing Models, Data, and Training with TensorBoard</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Image</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/torchvision_tutorial.html">TorchVision Object Detection Finetuning Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/transfer_learning_tutorial.html">Transfer Learning for Computer Vision Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/spatial_transformer_tutorial.html">Spatial Transformer Networks Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/neural_style_tutorial.html">Neural Transfer Using PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/fgsm_tutorial.html">Adversarial Example Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/dcgan_faces_tutorial.html">DCGAN Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Audio</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beginner/audio_preprocessing_tutorial.html">torchaudio Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Text</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/char_rnn_classification_tutorial.html">NLP From Scratch: Classifying Names with a Character-Level RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/char_rnn_generation_tutorial.html">NLP From Scratch: Generating Names with a Character-Level RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/seq2seq_translation_tutorial.html">NLP From Scratch: Translation with a Sequence to Sequence Network and Attention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/text_sentiment_ngrams_tutorial.html">Text Classification with TorchText</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/torchtext_translation_tutorial.html">Language Translation with TorchText</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/transformer_tutorial.html">Sequence-to-Sequence Modeling with nn.Transformer and TorchText</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Named Tensor (experimental)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/named_tensor_tutorial.html">(experimental) Introduction to Named Tensors in PyTorch</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reinforcement Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/reinforcement_q_learning.html">Reinforcement Learning (DQN) Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Deploying PyTorch Models in Production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/flask_rest_api_tutorial.html">Deploying PyTorch in Python via a REST API with Flask</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/Intro_to_TorchScript_tutorial.html">Introduction to TorchScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/cpp_export.html">Loading a TorchScript Model in C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/super_resolution_with_onnxruntime.html">(optional) Exporting a Model from PyTorch to ONNX and Running it using ONNX Runtime</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Parallel and Distributed Training</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/model_parallel_tutorial.html">Model Parallel Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/ddp_tutorial.html">Getting Started with Distributed Data Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/dist_tuto.html">Writing Distributed Applications with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/aws_distributed_training_tutorial.html">(advanced) PyTorch 1.0 Distributed Trainer with Amazon AWS</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extending PyTorch</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="advanced/torch_script_custom_ops.html">Extending TorchScript with Custom C++ Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/numpy_extensions_tutorial.html">Creating Extensions Using numpy and scipy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/cpp_extension.html">Custom C++ and CUDA Extensions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantization (experimental)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="advanced/dynamic_quantization_tutorial.html">(experimental) Dynamic Quantization on an LSTM Word Language Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/static_quantization_tutorial.html">(experimental) Static Quantization with Eager Mode in PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/quantized_transfer_learning_tutorial.html">Quantized Transfer Learning for Computer Vision Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/dynamic_quantization_bert_tutorial.html">SyntaxError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/dynamic_quantization_bert_tutorial.html#introduction">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/dynamic_quantization_bert_tutorial.html#setup">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/dynamic_quantization_bert_tutorial.html#fine-tune-the-bert-model">Fine-tune the BERT model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/dynamic_quantization_bert_tutorial.html#apply-the-dynamic-quantization">Apply the dynamic quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/dynamic_quantization_bert_tutorial.html#conclusion">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intermediate/dynamic_quantization_bert_tutorial.html#references">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PyTorch in Other Languages</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="advanced/cpp_frontend.html">Using the PyTorch C++ Frontend</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PyTorch Fundamentals In-Depth</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beginner/pytorch_with_examples.html">Learning PyTorch with Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beginner/nn_tutorial.html">What is <cite>torch.nn</cite> <em>really</em>?</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="#">
+          
+            Tutorials
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>Welcome to PyTorch Tutorials</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"><img src="_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+
+          <div class="pytorch-call-to-action-links">
+            <div id="tutorial-type">index</div>
+
+            <div id="google-colab-link">
+              <img class="call-to-action-img" src="_static/images/pytorch-colab.svg"/>
+              <div class="call-to-action-desktop-view">Run in Google Colab</div>
+              <div class="call-to-action-mobile-view">Colab</div>
+            </div>
+            <div id="download-notebook-link">
+              <img class="call-to-action-notebook-img" src="_static/images/pytorch-download.svg"/>
+              <div class="call-to-action-desktop-view">Download Notebook</div>
+              <div class="call-to-action-mobile-view">Notebook</div>
+            </div>
+            <div id="github-view-link">
+              <img class="call-to-action-img" src="_static/images/pytorch-github.svg"/>
+              <div class="call-to-action-desktop-view">View on GitHub</div>
+              <div class="call-to-action-mobile-view">GitHub</div>
+            </div>
+          </div>
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="welcome-to-pytorch-tutorials">
+<h1>Welcome to PyTorch Tutorials<a class="headerlink" href="#welcome-to-pytorch-tutorials" title="Permalink to this headline">¶</a></h1>
+<p>To learn how to use PyTorch, begin with our Getting Started Tutorials.
+The <a class="reference internal" href="beginner/deep_learning_60min_blitz.html"><span class="doc">60-minute blitz</span></a> is the most common
+starting point, and provides a broad view into how to use PyTorch from the basics all the way into constructing deep neural networks.</p>
+<p>Some considerations:</p>
+<ul class="simple">
+<li><p>We’ve added a new feature to tutorials that allows users to open the notebook associated with a tutorial in Google Colab.
+Visit <a class="reference external" href="https://pytorch.org/tutorials/beginner/colab.html">this page</a> for more information.</p></li>
+<li><p>If you would like to do the tutorials interactively via IPython / Jupyter,
+each tutorial has a download link for a Jupyter Notebook and Python source code.</p></li>
+<li><p>Additional high-quality examples are available, including image classification,
+unsupervised learning, reinforcement learning, machine translation, and
+many other applications, in <a class="reference external" href="https://github.com/pytorch/examples/">PyTorch Examples</a>.</p></li>
+<li><p>You can find reference documentation for the PyTorch API and layers in <a class="reference external" href="https://pytorch.org/docs">PyTorch Docs</a> or via inline help.</p></li>
+<li><p>If you would like the tutorials section improved, please open a github issue
+<a class="reference external" href="https://github.com/pytorch/tutorials">here</a> with your feedback.</p></li>
+<li><p>Check out our
+<a class="reference external" href="https://pytorch.org/tutorials/beginner/ptcheat.html">PyTorch Cheat Sheet</a>
+for additional useful information.</p></li>
+<li><p>Finally, here’s a link to the
+<a class="reference external" href="https://github.com/pytorch/pytorch/releases">PyTorch Release Notes</a></p></li>
+</ul>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Understand PyTorch’s Tensor library and neural networks at a high level..."><div class="figure align-default" id="id1">
+<img alt="_images/pytorch-logo-flat.png" src="_images/pytorch-logo-flat.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="beginner/deep_learning_60min_blitz.html"><span class="doc">Deep Learning with PyTorch: A 60 Minute Blitz</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Learn how to load and preprocess/augment data from a non trivial dataset..."><div class="figure align-default" id="id2">
+<img alt="_images/landmarked_face21.png" src="_images/landmarked_face21.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="beginner/data_loading_tutorial.html"><span class="doc">Writing Custom Datasets, DataLoaders and Transforms</span></a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Learn to use TensorBoard to visualize data and model training..."><div class="figure align-default" id="id3">
+<img alt="_images/pytorch_tensorboard.png" src="_images/pytorch_tensorboard.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="intermediate/tensorboard_tutorial.html"><span class="doc">Visualizing Models, Data, and Training with TensorBoard</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<div style='clear:both'></div></div>
+<div class="section" id="image">
+<h2>Image<a class="headerlink" href="#image" title="Permalink to this headline">¶</a></h2>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Finetuning a pre-trained Mask R-CNN model..."><div class="figure align-default" id="id4">
+<img alt="_images/tv-img.png" src="_images/tv-img.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="intermediate/torchvision_tutorial.html"><span class="doc">TorchVision Object Detection Finetuning Tutorial</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="In transfer learning, a model created from one task is used in another..."><div class="figure align-default" id="id5">
+<img alt="_images/sphx_glr_transfer_learning_tutorial_001.png" src="_images/sphx_glr_transfer_learning_tutorial_001.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="beginner/transfer_learning_tutorial.html"><span class="doc">Transfer Learning for Computer Vision Tutorial</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Learn how to augment your network using a visual attention mechanism called spatial transformer networks..."><div class="figure align-default" id="id6">
+<img alt="_images/Five.gif" src="_images/Five.gif" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="intermediate/spatial_transformer_tutorial.html"><span class="doc">Spatial Transformer Networks Tutorial</span></a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="How to implement the Neural-Style algorithm developed by Gatys, Ecker, and Bethge..."><div class="figure align-default" id="id7">
+<img alt="_images/sphx_glr_neural_style_tutorial_004.png" src="_images/sphx_glr_neural_style_tutorial_004.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="advanced/neural_style_tutorial.html"><span class="doc">Neural Transfer Using PyTorch</span></a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Raise your awareness to the security vulnerabilities of ML models, and get insight into the hot topic of adversarial machine learning..."><div class="figure align-default" id="id8">
+<img alt="_images/panda.png" src="_images/panda.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="beginner/fgsm_tutorial.html"><span class="doc">Adversarial Example Generation</span></a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Train a generative adversarial network (GAN) to generate new celebrities..."><div class="figure align-default" id="id9">
+<img alt="_images/dcgan_generator1.png" src="_images/dcgan_generator1.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="beginner/dcgan_faces_tutorial.html"><span class="doc">DCGAN Tutorial</span></a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<div style='clear:both'></div></div>
+<div class="section" id="named-tensor-experimental">
+<h2>Named Tensor (experimental)<a class="headerlink" href="#named-tensor-experimental" title="Permalink to this headline">¶</a></h2>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Named Tensor..."><div class="figure align-default" id="id10">
+<img alt="_images/named_tensor.png" src="_images/named_tensor.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="intermediate/named_tensor_tutorial.html"><span class="doc">(experimental) Introduction to Named Tensors in PyTorch</span></a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<div style='clear:both'></div></div>
+<div class="section" id="audio">
+<h2>Audio<a class="headerlink" href="#audio" title="Permalink to this headline">¶</a></h2>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Preprocessing with torchaudio Tutorial..."><div class="figure align-default" id="id11">
+<img alt="_images/audio_preprocessing_tutorial_waveform.png" src="_images/audio_preprocessing_tutorial_waveform.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="beginner/audio_preprocessing_tutorial.html"><span class="doc">torchaudio Tutorial</span></a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<div style='clear:both'></div></div>
+<div class="section" id="text">
+<h2>Text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h2>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Build and train a basic character-level RNN to classify words..."><div class="figure align-default" id="id12">
+<img alt="_images/rnnclass.png" src="_images/rnnclass.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="intermediate/char_rnn_classification_tutorial.html"><span class="doc">NLP From Scratch: Classifying Names with a Character-Level RNN</span></a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Generate names from languages..."><div class="figure align-default" id="id13">
+<img alt="_images/char_rnn_generation.png" src="_images/char_rnn_generation.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="intermediate/char_rnn_generation_tutorial.html"><span class="doc">NLP From Scratch: Generating Names with a Character-Level RNN</span></a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="This is the third and final tutorial on doing &quot;NLP From Scratch&quot;, where we write our own classe..."><div class="figure align-default" id="id14">
+<img alt="_images/seq2seq_flat.png" src="_images/seq2seq_flat.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="intermediate/seq2seq_translation_tutorial.html#sphx-glr-intermediate-seq2seq-translation-tutorial-py"><span class="std std-ref">NLP From Scratch: Translation with a Sequence to Sequence Network and Attention</span></a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Sentiment Ngrams with Torchtext..."><div class="figure align-default" id="id15">
+<img alt="_images/text_sentiment_ngrams_model1.png" src="_images/text_sentiment_ngrams_model1.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="beginner/text_sentiment_ngrams_tutorial.html"><span class="doc">Text Classification with TorchText</span></a></span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Language Translation with Torchtext..."><div class="figure align-default" id="id16">
+<img alt="_images/german_to_english_translation.png" src="_images/german_to_english_translation.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="beginner/torchtext_translation_tutorial.html"><span class="doc">Language Translation with TorchText</span></a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Transformer Tutorial..."><div class="figure align-default" id="id17">
+<img alt="_images/transformer_architecture1.jpg" src="_images/transformer_architecture1.jpg" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="beginner/transformer_tutorial.html"><span class="doc">Sequence-to-Sequence Modeling with nn.Transformer and TorchText</span></a></span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<div style='clear:both'></div></div>
+<div class="section" id="reinforcement-learning">
+<h2>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Permalink to this headline">¶</a></h2>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Use PyTorch to train a Deep Q Learning (DQN) agent..."><div class="figure align-default" id="id18">
+<img alt="_images/cartpole.gif" src="_images/cartpole.gif" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="intermediate/reinforcement_q_learning.html"><span class="doc">Reinforcement Learning (DQN) Tutorial</span></a></span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<div style='clear:both'></div></div>
+<div class="section" id="deploying-pytorch-models-in-production">
+<h2>Deploying PyTorch Models in Production<a class="headerlink" href="#deploying-pytorch-models-in-production" title="Permalink to this headline">¶</a></h2>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Deploying PyTorch and Building a REST API using Flask..."><div class="figure align-default" id="id19">
+<img alt="_images/flask.png" src="_images/flask.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="intermediate/flask_rest_api_tutorial.html"><span class="doc">Deploying PyTorch in Python via a REST API with Flask</span></a></span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Introduction to TorchScript..."><div class="figure align-default" id="id20">
+<img alt="_images/torchscript.png" src="_images/torchscript.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="beginner/Intro_to_TorchScript_tutorial.html"><span class="doc">Introduction to TorchScript</span></a></span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Loading a PyTorch model in C++..."><div class="figure align-default" id="id21">
+<img alt="_images/torchscript_to_cpp.png" src="_images/torchscript_to_cpp.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="advanced/cpp_export.html"><span class="doc">Loading a TorchScript Model in C++</span></a></span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Exporting a Model from PyTorch to ONNX and Running it using ONNXRuntime..."><div class="figure align-default" id="id22">
+<img alt="_images/cat.jpg" src="_images/cat.jpg" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="advanced/super_resolution_with_onnxruntime.html"><span class="doc">(optional) Exporting a Model from PyTorch to ONNX and Running it using ONNX Runtime</span></a></span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<div style='clear:both'></div></div>
+<div class="section" id="parallel-and-distributed-training">
+<h2>Parallel and Distributed Training<a class="headerlink" href="#parallel-and-distributed-training" title="Permalink to this headline">¶</a></h2>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Model parallel training on multiple GPUs..."><div class="figure align-default" id="id23">
+<img alt="_images/DistPyTorch.jpg" src="_images/DistPyTorch.jpg" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="intermediate/model_parallel_tutorial.html"><span class="doc">Model Parallel Best Practices</span></a></span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Getting started with DistributedDataParallel..."><div class="figure align-default" id="id24">
+<img alt="_images/DistPyTorch.jpg" src="_images/DistPyTorch.jpg" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="intermediate/ddp_tutorial.html"><span class="doc">Getting Started with Distributed Data Parallel</span></a></span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Parallelize computations across processes and clusters of machines..."><div class="figure align-default" id="id25">
+<img alt="_images/DistPyTorch.jpg" src="_images/DistPyTorch.jpg" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="intermediate/dist_tuto.html"><span class="doc">Writing Distributed Applications with PyTorch</span></a></span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="PyTorch distributed trainer with Amazon AWS..."><div class="figure align-default" id="id26">
+<img alt="_images/DistPyTorch.jpg" src="_images/DistPyTorch.jpg" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="beginner/aws_distributed_training_tutorial.html"><span class="doc">(advanced) PyTorch 1.0 Distributed Trainer with Amazon AWS</span></a></span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<div style='clear:both'></div></div>
+<div class="section" id="extending-pytorch">
+<h2>Extending PyTorch<a class="headerlink" href="#extending-pytorch" title="Permalink to this headline">¶</a></h2>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Implement custom operators in C++ or CUDA for TorchScript..."><div class="figure align-default" id="id27">
+<img alt="_images/cpp_logo.png" src="_images/cpp_logo.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="advanced/torch_script_custom_ops.html"><span class="doc">Extending TorchScript with Custom C++ Operators</span></a></span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Create extensions using numpy and scipy..."><div class="figure align-default" id="id28">
+<img alt="_images/scipynumpy.png" src="_images/scipynumpy.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="advanced/numpy_extensions_tutorial.html"><span class="doc">Creating Extensions Using numpy and scipy</span></a></span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Implement custom extensions in C++ or CUDA for eager PyTorch..."><div class="figure align-default" id="id29">
+<img alt="_images/cpp_logo.png" src="_images/cpp_logo.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="advanced/cpp_extension.html"><span class="doc">Custom C++ and CUDA Extensions</span></a></span><a class="headerlink" href="#id29" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<div style='clear:both'></div></div>
+<div class="section" id="quantization-experimental">
+<h2>Quantization (experimental)<a class="headerlink" href="#quantization-experimental" title="Permalink to this headline">¶</a></h2>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Perform dynamic quantization on a pre-trained PyTorch model..."><div class="figure align-default" id="id30">
+<img alt="_images/quant_asym.png" src="_images/quant_asym.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="advanced/dynamic_quantization_tutorial.html"><span class="doc">(experimental) Dynamic Quantization on an LSTM Word Language Model</span></a></span><a class="headerlink" href="#id30" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="(experimental) Static Quantization with Eager Mode in PyTorch..."><div class="figure align-default" id="id31">
+<img alt="_images/qat.png" src="_images/qat.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="advanced/static_quantization_tutorial.html"><span class="doc">(experimental) Static Quantization with Eager Mode in PyTorch</span></a></span><a class="headerlink" href="#id31" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Perform quantized transfer learning with feature extractor..."><div class="figure align-default" id="id32">
+<img alt="_images/quantized_transfer_learning.png" src="_images/quantized_transfer_learning.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="intermediate/quantized_transfer_learning_tutorial.html"><span class="doc">Quantized Transfer Learning for Computer Vision Tutorial</span></a></span><a class="headerlink" href="#id32" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Convert a well-known state-of-the-art model like BERT into dynamic quantized model..."><div class="figure align-default" id="id33">
+<img alt="_images/bert.png" src="_images/bert.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="intermediate/dynamic_quantization_bert_tutorial.html"><span class="doc">SyntaxError</span></a></span><a class="headerlink" href="#id33" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<div style='clear:both'></div></div>
+<div class="section" id="pytorch-in-other-languages">
+<h2>PyTorch in Other Languages<a class="headerlink" href="#pytorch-in-other-languages" title="Permalink to this headline">¶</a></h2>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Using the PyTorch C++ Frontend..."><div class="figure align-default" id="id34">
+<img alt="_images/cpp-pytorch.png" src="_images/cpp-pytorch.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="advanced/cpp_frontend.html"><span class="doc">Using the PyTorch C++ Frontend</span></a></span><a class="headerlink" href="#id34" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<div style='clear:both'></div></div>
+<div class="section" id="pytorch-fundamentals-in-depth">
+<h2>PyTorch Fundamentals In-Depth<a class="headerlink" href="#pytorch-fundamentals-in-depth" title="Permalink to this headline">¶</a></h2>
+<p><div class="sphx-glr-thumbcontainer" tooltip="This tutorial introduces the fundamental concepts of PyTorch through self-contained examples..."><div class="figure align-default" id="id35">
+<img alt="_images/examples.png" src="_images/examples.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="beginner/pytorch_with_examples.html"><span class="doc">Learning PyTorch with Examples</span></a></span><a class="headerlink" href="#id35" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<p><div class="sphx-glr-thumbcontainer" tooltip="Use torch.nn to create and train a neural network..."><div class="figure align-default" id="id36">
+<img alt="_images/torch.nn.png" src="_images/torch.nn.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="beginner/nn_tutorial.html"><span class="doc">What is torch.nn really?</span></a></span><a class="headerlink" href="#id36" title="Permalink to this image">¶</a></p>
+</div>
+</div></p>
+<div style='clear:both'></div><div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="beginner/deep_learning_60min_blitz.html" class="btn btn-neutral float-right" title="Deep Learning with PyTorch: A 60 Minute Blitz" accesskey="n" rel="next">Next <img src="_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+    </div>
+  
+
+  
+
+    <hr class="helpful-hr hr-top">
+      <div class="helpful-container">
+        <div class="helpful-question">Was this helpful?</div>
+        <div class="helpful-question yes-link" data-behavior="was-this-helpful-event" data-response="yes">Yes</div>
+        <div class="helpful-question no-link" data-behavior="was-this-helpful-event" data-response="no">No</div>
+        <div class="was-helpful-thank-you">Thank you</div>
+      </div>
+    <hr class="helpful-hr hr-bottom"/>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, PyTorch.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Welcome to PyTorch Tutorials</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li><a class="reference internal" href="#image">Image</a></li>
+<li><a class="reference internal" href="#named-tensor-experimental">Named Tensor (experimental)</a></li>
+<li><a class="reference internal" href="#audio">Audio</a></li>
+<li><a class="reference internal" href="#text">Text</a></li>
+<li><a class="reference internal" href="#reinforcement-learning">Reinforcement Learning</a></li>
+<li><a class="reference internal" href="#deploying-pytorch-models-in-production">Deploying PyTorch Models in Production</a></li>
+<li><a class="reference internal" href="#parallel-and-distributed-training">Parallel and Distributed Training</a></li>
+<li><a class="reference internal" href="#extending-pytorch">Extending PyTorch</a></li>
+<li><a class="reference internal" href="#quantization-experimental">Quantization (experimental)</a></li>
+<li><a class="reference internal" href="#pytorch-in-other-languages">PyTorch in Other Languages</a></li>
+<li><a class="reference internal" href="#pytorch-fundamentals-in-depth">PyTorch Fundamentals In-Depth</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+         <script type="text/javascript" src="_static/jquery.js"></script>
+         <script type="text/javascript" src="_static/underscore.js"></script>
+         <script type="text/javascript" src="_static/doctools.js"></script>
+         <script type="text/javascript" src="_static/language_data.js"></script>
+         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="_static/js/vendor/bootstrap.min.js"></script>
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-90545585-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117752657-2"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+  gtag('config', 'UA-117752657-2');
+
+</script>
+
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '243028289693773');
+  fbq('track', 'PageView');
+
+  $("[data-behavior='call-to-action-event']").on('click', function(){
+    fbq('trackCustom', "Download", {
+      tutorialTitle: $('h1:first').text(),
+      downloadLink: this.href,
+      tutorialLink: window.location.href,
+      downloadTitle: $(this).attr("data-response")
+    });
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Download',
+      eventAction: 'click',
+      eventLabel: $(this).attr("data-response")
+    });
+   });
+
+   $("[data-behavior='was-this-helpful-event']").on('click', function(){
+    $(".helpful-question").hide();
+    $(".was-helpful-thank-you").show();
+    fbq('trackCustom', "Was this Helpful?", {
+      tutorialLink: window.location.href,
+      tutorialTitle: $('h1:first').text(),
+      helpful: $(this).attr("data-response")
+    });
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Was this Helpful?',
+      eventAction: 'click',
+      eventLabel: $(this).attr("data-response")
+    });
+   });
+
+   if (location.pathname == "/") {
+     $(".helpful-container").hide();
+     $(".hr-bottom").hide();
+   }
+</script>
+
+<noscript>
+  <img height="1" width="1"
+  src="https://www.facebook.com/tr?id=243028289693773&ev=PageView
+  &noscript=1"/>
+</noscript>
+<img height="1" width="1" style="border-style:none;" alt="" src="https://www.googleadservices.com/pagead/conversion/795629140/?label=txkmCPmdtosBENSssfsC&amp;guid=ON&amp;script=0"/>
+
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive developer documentation for PyTorch</p>
+          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get in-depth tutorials for beginners and advanced developers</p>
+          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Resources</h2>
+          <p>Find development resources and get your questions answered</p>
+          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-logo-wrapper">
+        <a href="https://pytorch.org/" class="footer-logo"></a>
+      </div>
+
+      <div class="footer-links-wrapper">
+        <div class="footer-links-col">
+          <ul>
+            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
+            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
+            <li><a href="https://pytorch.org/features">Features</a></li>
+            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
+            <li><a href="https://pytorch.org/blog/">Blog</a></li>
+            <li><a href="https://pytorch.org/resources">Resources</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <ul>
+            <li class="list-title"><a href="https://pytorch.org/support">Support</a></li>
+            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
+            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
+            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
+            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
+            <li><a href="https://pytorch.slack.com" target="_blank">Slack</a></li>
+            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md" target="_blank">Contributing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col follow-us-col">
+          <ul>
+            <li class="list-title">Follow Us</li>
+            <li>
+              <div id="mc_embed_signup">
+                <form
+                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
+                  method="post"
+                  id="mc-embedded-subscribe-form"
+                  name="mc-embedded-subscribe-form"
+                  class="email-subscribe-form validate"
+                  target="_blank"
+                  novalidate>
+                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
+                    <div class="mc-field-group">
+                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
+                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
+                    </div>
+
+                    <div id="mce-responses" class="clear">
+                      <div class="response" id="mce-error-response" style="display:none"></div>
+                      <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
+
+                    <div class="clear">
+                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+            </li>
+          </ul>
+
+          <div class="footer-social-icons">
+            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
+            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://pytorch.org/get-started">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/features">Features</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li class="active">
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/resources">Resources</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/pytorch/pytorch">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>
