@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SyntaxError — PyTorch Tutorials 1.3.1 documentation</title>
+<title>(Experimental) Dynamic Quantization on HuggingFace BERT model — PyTorch Tutorials 1.4.0a0+756f279 documentation</title>
 <link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
 <link href="../_static/gallery.css" rel="stylesheet" type="text/css"/>
@@ -106,7 +106,7 @@
 <div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
 <div class="pytorch-left-menu-search">
 <div class="version">
-                  1.3.1
+                  1.4.0a0+756f279
                 </div>
 <div role="search">
 <form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
@@ -177,7 +177,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../advanced/dynamic_quantization_tutorial.html">(experimental) Dynamic Quantization on an LSTM Word Language Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced/static_quantization_tutorial.html">(experimental) Static Quantization with Eager Mode in PyTorch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quantized_transfer_learning_tutorial.html">Quantized Transfer Learning for Computer Vision Tutorial</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SyntaxError</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">(Experimental) Dynamic Quantization on HuggingFace BERT model</a></li>
 </ul>
 <p class="caption"><span class="caption-text">PyTorch in Other Languages</span></p>
 <ul>
@@ -203,7 +203,7 @@
           
         </a> &gt;
       </li>
-<li>SyntaxError</li>
+<li>(Experimental) Dynamic Quantization on HuggingFace BERT model</li>
 <li class="pytorch-breadcrumbs-aside">
 <a href="../_sources/intermediate/dynamic_quantization_bert_tutorial.rst.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"/></a>
 </li>
@@ -241,22 +241,11 @@
 <p class="admonition-title">Note</p>
 <p>Click <a class="reference internal" href="#sphx-glr-download-intermediate-dynamic-quantization-bert-tutorial-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="syntaxerror">
-<span id="sphx-glr-intermediate-dynamic-quantization-bert-tutorial-py"></span><h1>SyntaxError<a class="headerlink" href="#syntaxerror" title="Permalink to this headline">¶</a></h1>
-<p>Example script with invalid Python syntax</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">"""</span>
-<span class="sd">(Experimental) Dynamic Quantization on HuggingFace BERT model</span>
-<span class="sd">==============================================================</span>
-<span class="sd">**Author**: `Jianyu Huang &lt;https://github.com/jianyuh&gt;`_</span>
-
-<span class="sd">**Reviewed by**: `Raghuraman Krishnamoorthi &lt;https://github.com/raghuramank100&gt;`_</span>
-
-<span class="sd">**Edited by**: `Jessica Lin &lt;https://github.com/jlin27&gt;`_</span>
-
-<span class="sd">"""</span>
-</pre></div>
-</div>
+<div class="sphx-glr-example-title section" id="experimental-dynamic-quantization-on-huggingface-bert-model">
+<span id="sphx-glr-intermediate-dynamic-quantization-bert-tutorial-py"></span><h1>(Experimental) Dynamic Quantization on HuggingFace BERT model<a class="headerlink" href="#experimental-dynamic-quantization-on-huggingface-bert-model" title="Permalink to this headline">¶</a></h1>
+<p><strong>Author</strong>: <a class="reference external" href="https://github.com/jianyuh">Jianyu Huang</a></p>
+<p><strong>Reviewed by</strong>: <a class="reference external" href="https://github.com/raghuramank100">Raghuraman Krishnamoorthi</a></p>
+<p><strong>Edited by</strong>: <a class="reference external" href="https://github.com/jlin27">Jessica Lin</a></p>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>In this tutorial, we will apply the dynamic quantization on a BERT
@@ -312,8 +301,8 @@ in PyTorch and HuggingFace Github Repo: -
 <a class="reference external" href="https://github.com/huggingface/transformers#installation">https://github.com/huggingface/transformers#installation</a></p>
 <p>In addition, we also install <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> package, as we will reuse its
 built-in F1 score calculation helper function.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>!pip install sklearn
-!pip install transformers
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install sklearn
+pip install transformers
 </pre></div>
 </div>
 <p>Because we will be using the experimental parts of the PyTorch, it is
@@ -321,6 +310,10 @@ recommended to install the latest version of torch and torchvision. You
 can find the most recent instructions on local installation here
 <a class="reference external" href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a>. For example, to install on
 Mac:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>yes y <span class="p">|</span> pip uninstall torch tochvision
+yes y <span class="p">|</span> pip install --pre torch -f https://download.pytorch.org/whl/nightly/cu101/torch_nightly.html
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="import-the-necessary-modules">
@@ -370,12 +363,9 @@ Mac:</p>
 (<a class="reference external" href="https://gist.github.com/W4ngatang/60c2bdb54d156a41194446737ce03e2e">https://gist.github.com/W4ngatang/60c2bdb54d156a41194446737ce03e2e</a>,
 <a class="reference external" href="https://github.com/nyu-mll/GLUE-baselines/blob/master/download_glue_data.py">https://github.com/nyu-mll/GLUE-baselines/blob/master/download_glue_data.py</a>)
 and unpack it to some directory “glue_data/MRPC”.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># !python download_glue_data.py --data_dir='glue_data' --tasks='MRPC' --test_labels=True
-!pwd
-!ls
-!wget https://gist.githubusercontent.com/W4ngatang/60c2bdb54d156a41194446737ce03e2e/raw/17b8dd0d724281ed7c3b2aeeda662b92809aadd5/download_glue_data.py
-!python download_glue_data.py --data_dir='glue_data' --tasks='MRPC'
-!ls glue_data/MRPC
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>wget https://gist.githubusercontent.com/W4ngatang/60c2bdb54d156a41194446737ce03e2e/raw/17b8dd0d724281ed7c3b2aeeda662b92809aadd5/download_glue_data.py
+python download_glue_data.py --data_dir<span class="o">=</span><span class="s1">'glue_data'</span> --tasks<span class="o">=</span><span class="s1">'MRPC'</span>
+ls glue_data/MRPC
 </pre></div>
 </div>
 </div>
@@ -443,11 +433,8 @@ task in your Google Drive (Create the same “BERT_Quant_Tutorial/MRPC”
 folder in the Google Drive directory), and then mount your Google Drive
 on your runtime using an authorization code, so that we can directly
 read and write the models into Google Drive in the following steps.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>from google.colab import drive
-drive.mount('/content/drive')
-
-!ls
-!pwd
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="k">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">'/content/drive'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -458,13 +445,9 @@ model before and after the dynamic quantization.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">configs</span> <span class="o">=</span> <span class="n">Namespace</span><span class="p">()</span>
 
 <span class="c1"># The output directory for the fine-tuned model.</span>
-<span class="c1"># configs.output_dir = "/mnt/homedir/jianyuhuang/public/bert/MRPC/"</span>
 <span class="n">configs</span><span class="o">.</span><span class="n">output_dir</span> <span class="o">=</span> <span class="s2">"/content/drive/My Drive/BERT_Quant_Tutorial/MRPC/"</span>
-<span class="c1"># configs.output_dir = "./MRPC/"</span>
 
 <span class="c1"># The data directory for the MRPC task in the GLUE benchmark.</span>
-<span class="c1"># configs.data_dir = "/mnt/homedir/jianyuhuang/public/bert/glue_data/MRPC"</span>
-<span class="c1"># configs.data_dir = "./glue_data/MRPC"</span>
 <span class="n">configs</span><span class="o">.</span><span class="n">data_dir</span> <span class="o">=</span> <span class="s2">"/content/glue_data/MRPC"</span>
 
 <span class="c1"># The model name or path for the pre-trained model.</span>
@@ -666,24 +649,6 @@ values.</p></li>
 <span class="nb">print</span><span class="p">(</span><span class="n">quantized_model</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In PyTorch 1.4 release, we further add the per-channel quantization
-support for dynamic quantization.</p>
-<div class="figure align-default" id="id2">
-<img alt="Per Tensor Quantization for Weight" src="https://drive.google.com/open?id=1N6P70MR6jJ2tcFnFJ2lROLSFqmiOY--g"/>
-<p class="caption"><span class="caption-text">Per Tensor Quantization for Weight</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="id3">
-<img alt="Per Channel Quantization for Weight" src="https://drive.google.com/open?id=1nyjUKP5qtkRCJPKtUaXXwhglLMQQ0Dfs"/>
-<p class="caption"><span class="caption-text">Per Channel Quantization for Weight</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qconfig_dict</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">per_channel_dynamic_qconfig</span>
-<span class="p">}</span>
-<span class="n">per_channel_quantized_model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">quantize_dynamic</span><span class="p">(</span>
-    <span class="n">model</span><span class="p">,</span> <span class="n">qconfig_dict</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">qint8</span>
-<span class="p">)</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="check-the-model-size">
 <h2>Check the model size<a class="headerlink" href="#check-the-model-size" title="Permalink to this headline">¶</a></h2>
@@ -696,7 +661,6 @@ in model size:</p>
 
 <span class="n">print_size_of_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 <span class="n">print_size_of_model</span><span class="p">(</span><span class="n">quantized_model</span><span class="p">)</span>
-<span class="c1"># print_size_of_model(per_channel_quantized_model)</span>
 </pre></div>
 </div>
 <p>The BERT model used in this tutorial (bert-base-uncased) has a
@@ -755,10 +719,6 @@ You can use <code class="docutils literal notranslate"><span class="pre">torch._
 parallelization settings. On the same MacBook Pro using PyTorch with
 Native backend for parallelization, we can get about 46 seconds for
 processing the evaluation of MRPC dataset.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate the INT8 BERT model after the per-channel dynamic quantization</span>
-<span class="n">time_model_evaluation</span><span class="p">(</span><span class="n">per_channel_quantized_model</span><span class="p">,</span> <span class="n">configs</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="serialize-the-quantized-model">
 <h2>Serialize the quantized model<a class="headerlink" href="#serialize-the-quantized-model" title="Permalink to this headline">¶</a></h2>
@@ -766,7 +726,7 @@ processing the evaluation of MRPC dataset.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">quantized_output_dir</span> <span class="o">=</span> <span class="n">configs</span><span class="o">.</span><span class="n">output_dir</span> <span class="o">+</span> <span class="s2">"quantized/"</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">quantized_output_dir</span><span class="p">):</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">quantized_output_dir</span><span class="p">)</span>
-<span class="n">quantized_model</span><span class="o">.</span><span class="n">save_pretrained</span><span class="p">(</span><span class="n">quantized_output_dir</span><span class="p">)</span>
+    <span class="n">quantized_model</span><span class="o">.</span><span class="n">save_pretrained</span><span class="p">(</span><span class="n">quantized_output_dir</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -831,7 +791,7 @@ Quantized 8bit BERT. arXiv preprint arXiv:1910.06188.</p>
 <div class="pytorch-right-menu" id="pytorch-right-menu">
 <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
 <ul>
-<li><a class="reference internal" href="#">SyntaxError</a><ul>
+<li><a class="reference internal" href="#">(Experimental) Dynamic Quantization on HuggingFace BERT model</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
 <li><a class="reference internal" href="#setup">Setup</a><ul>
 <li><a class="reference internal" href="#install-pytorch-and-huggingface-transformers">Install PyTorch and HuggingFace Transformers</a></li>
